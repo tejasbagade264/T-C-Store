@@ -1,0 +1,49 @@
+/* Cart.css */
+.cart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.items-container {
+    flex: 70%;
+}
+
+.cart-summary {
+    flex: 30%;
+    background-color: #f3f3f3;
+    padding: 20px;
+}
+
+.cart-items {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.item-image {
+    width: 130px;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.proceed-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Additional styling as needed */

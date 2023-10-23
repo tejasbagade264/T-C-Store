@@ -1,0 +1,28 @@
+
+.carousel-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+}
+
+.carousel-image {
+  width: 100%; /* Image width will be 100% of the parent container */
+  height: auto; /* Preserve the image's aspect ratio */
+  max-width: 75vw; /* Set a maximum width to prevent images from becoming too large */
+  max-height: 80vh; /* Set a maximum height to limit image height */
+  margin: auto; /* Center the image horizontally */
+}
+
+
+
+/* Media queries for different screen sizes */
+@media screen and (max-width: 768px) {
+  .carousel-image {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+}
+
+

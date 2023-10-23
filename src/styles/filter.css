@@ -1,0 +1,37 @@
+/* filter.css */
+.filter-container {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    gap:2rem;
+    max-height: 30px;
+}
+
+.types {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px ;
+    margin-bottom: 10px;
+    color: black;
+    font-family:  Courier, monospace;
+}
+.types:hover{
+    color:red
+    
+}
+
+.selected {
+    background-color: #000;
+    color: #fff;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.data-box:hover{
+    display: block;
+}
+
+
