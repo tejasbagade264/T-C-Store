@@ -1,3 +1,19 @@
+# view
+![image](https://github.com/tejasbagade264/T-C-Store/assets/139443949/0203cb11-6246-4466-b301-d31ca1b4d260)
+![image](https://github.com/tejasbagade264/T-C-Store/assets/139443949/4a240c15-db70-498c-8b17-5a08f1d752e6)
+![image](https://github.com/tejasbagade264/T-C-Store/assets/139443949/98a9607f-0fcf-408d-a00c-ba5c88f187bd)
+![image](https://github.com/tejasbagade264/T-C-Store/assets/139443949/59f5bdf8-e71c-4dfb-8f9d-d9fd4cc1e35d)
+![image](https://github.com/tejasbagade264/T-C-Store/assets/139443949/afa4cc59-0ff5-48db-9bcd-d48cf6195503)
+![image](https://github.com/tejasbagade264/T-C-Store/assets/139443949/0b9c7d2b-edad-42e0-99d8-493d74b17f30)
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
