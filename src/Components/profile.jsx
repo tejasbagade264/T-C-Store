@@ -1,69 +1,46 @@
-import React, { useState } from 'react';
-import styles from '../styles/Profile.module.css';
+import React, { useEffect } from "react";
+import '../styles/profile.css';
+import NavBar from "./Navbar";
+import { useValue } from "../itemContext";
 
-const Profile = () => {
-  const [isEditingAddress, setIsEditingAddress] = useState(false);
-  const [address, setAddress] = useState('123 Example Street, City, Country');
-  const [menuVisible, setMenuVisible] = useState(false);
+function Profile() {
+  const { setCurrentPage } = useValue();
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const userName = storedUser ? storedUser.displayName : 'Guest';
 
-  const toggleAddressEditing = () => {
-    setIsEditingAddress(!isEditingAddress);
-  };
-
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
-  };
+  useEffect(() => {
+    setCurrentPage('profile');
+  }, [setCurrentPage]);
 
   return (
-    <div className={styles.profileContainer}>
-      <div className={styles.profileHeader}>
-        <img
-          src="h&m tee.jpeg" // Replace with the URL of the user's profile picture
-          alt="User Profile"
-          className={styles.profileImage}
-        />
-        <div className={styles.profileInfo}>
-          <h2>User Name</h2>
-          <div className={styles.addressContainer}>
-            {isEditingAddress ? (
-              <input
-                type="text"
-                value={address}
-                onChange={handleAddressChange}
-                className={styles.addressInput}
-              />
-            ) : (
-              <p>{address}</p>
-            )}
-            <button
-              onClick={toggleAddressEditing}
-              className={styles.editAddressButton}
-            >
-              {isEditingAddress ? 'Save' : 'Edit'}
-            </button>
+    <>
+      <NavBar />
+
+      <div className="Profile-Container">
+        <div className="Profile-pic-Container">
+          <img src="h&m tee.jpeg" alt="Profile-Picture" />
+        </div>
+
+        <div className="Profile-Details">
+          {userName ? ( // Check if userName is available
+            <div className="UserDetails">
+              <p className="Name">{userName}</p>
+              <p>Mobile No: 9096020426</p>
+              <p>EmailId: tejasbagade264@gmail.com</p>
+            </div>
+          ) : (
+            <p>Loading...</p> // Display a loading message or handle as needed
+          )}
+
+          <div className="Address">
+            <p className="Add">Address</p>
+            <p>At po. Sangrampur , Dist Buldhana, </p>
+            <p>444202</p>
           </div>
         </div>
-        <div className={styles.profileMenu}>
-          <button onClick={toggleMenu} className={styles.menuButton}>
-            Options
-          </button>
-          {menuVisible && (
-            <div className={styles.menuOptions}>
-              <ul>
-                <li>Orders</li>
-                <li>Wishlist</li>
-                <li>Address</li>
-              </ul>
-            </div>
-          )}
-        </div>
       </div>
-    </div>
+    </>
   );
-};
+}
 
 export default Profile;

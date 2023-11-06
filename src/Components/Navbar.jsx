@@ -5,16 +5,20 @@ import { useValue } from "../itemContext";
 import Filter from "./filter";
 import { useEffect } from "react";
 
+
 function NavBar() {
-  const { handleCart, handleLogOut, currentPage, clickHome ,setCurrentPage} = useValue();
+  const { handleCart, handleLogOut, currentPage, clickHome ,setCurrentPage,GoToProfile} = useValue();
   const navigate = useNavigate();
   
 
   return (
+    
     <div className={styles.ContainerNavBar}>
       <div className={styles.Logo} onClick={() => clickHome()}>
         <img src="t&C.png" alt="Logo" />
       </div>
+
+      
       
       {currentPage === 'home' && (
         <>
@@ -30,7 +34,7 @@ function NavBar() {
           <div className={styles.cartlogo} onClick={handleCart}>
             <img src="cartlogo.png" />
           </div>
-          <div className={styles.User}>
+          <div className={styles.User} onClick={ GoToProfile}>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBcOXXT2OaUiBh5JbegxhZ9aJLEWMvmio3jQ&usqp=CAU" alt="User" />
           </div>
           <button onClick={handleLogOut}>Logout</button>

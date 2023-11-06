@@ -6,10 +6,14 @@ import NavBar from '../Components/Navbar';
 import { useValue } from '../itemContext';
 
 const ProductDetail = () => {
-  const {handleAddToCart}=useValue();
+  const {handleAddToCart,setCurrentPage}=useValue();
   const [selectedSize, setSelectedSize] = useState(""); // State for selected size
   const { id } = useParams();
   const [prod, setProd] = useState(null); // Initialize to null until data is fetched
+
+  useEffect(()=>{
+    setCurrentPage('ProductDetails');
+ },[]);
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
@@ -65,10 +69,12 @@ const ProductDetail = () => {
             <div className="product-details">
               <h1 className="product-name">{prod.title}</h1>
               <div className="product-rating">
-                Rating: {prod.rating}
-                {/* You can add star rating graphics here */}
-              </div>
-              <div>  {prod.description}</div>
+                {Array.from({ length: prod.rating }, (_, index) => (
+                  <i key={index} className="fa-solid fa-star" style={{ color: '#fff700' }} />
+                  ))}
+               </div>
+               <div> Brand:  {prod.brand}</div> 
+              <div>Description:  {prod.description}</div>
              
               <div className="product-sizes">
                 Sizes: {product.sizes.map((size) => (

@@ -1,0 +1,21 @@
+.zooming-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .zooming-image {
+    animation: zoomInOut 2s linear infinite;
+    max-width: 400px;
+  }
+  
+  @keyframes zoomInOut {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  

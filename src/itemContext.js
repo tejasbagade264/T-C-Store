@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import ProductDetail from "./pages/ProductDetails";
 
 
+
 const itemContext = createContext();
 
 function useValue(){
@@ -26,10 +27,11 @@ function CustomItemContext({children}) {
 
     const [cart , setCart] =useState([]);
     const [total, setTotal]=useState(0);
-    const [quantity, setQuanity] =useState(0);
+    const [quantity, setQuantity] =useState(0);
     const categories = [ "Mens", "Womens", "Kids" ];
     const [selectedCategories, setSelectedCategories] = useState('');
     const [categoryData, setcategoryData]= useState([]);
+    
     
     
     const [allData, setAllData] = useState([]);
@@ -70,6 +72,11 @@ function CustomItemContext({children}) {
       console.log("selectedCtegory", selectedCategories);
     }
 
+    
+   const GoToProfile= () =>{
+    navigate('/Profile');
+  }
+
 
 
     const scrollToMiddle = () => {
@@ -103,37 +110,52 @@ function CustomItemContext({children}) {
         navigate("/login"); // Use lowercase "navigate"
       }
 
-      const handleAddToCart = (prod) => {  
-        const index= cart.findIndex((item) => item.id===prod.id);
 
-        if(index === (-1)){
-        
+
+      const handleAddToCart = (prod) => {
+    const index = cart.findIndex((item) => item.id === prod.id);
+
+    if (index === -1) {
         setCart((prevCart) => {
-          const updatedCart = [...prevCart, { ...prod,qty:1 }];
-          console.log(updatedCart); // Log the updated cart
-          toast.success(` ${prod.name}Added to cart`, {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
-          setTotal(total+prod.price);
-          setQuanity(quantity+1);
-          return updatedCart; // Return the updated cart as the new state
+            const updatedCart = [...prevCart, { ...prod, qty: 1 }];
+
+            // Update local state for total and quantity
+            setTotal(total + prod.price);
+            setQuantity(quantity + 1);
+
+            // Display notification
+            toast.success(`${prod.name} added to cart`, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
+
+            return updatedCart;
         });
-      }else{
+    } else {
         const updatedCart = [...cart];
         updatedCart[index].qty += 1;
-        setCart(updatedCart);
-        setTotal(total+prod.price);
-        setQuanity(quantity+1);
-        toast.success(`${prod.name}Added to cart`, {
+
+        // Update local state for total and quantity
+        setTotal(total + prod.price);
+        setQuantity(quantity + 1);
+
+        // Display notification
+        toast.success(`${prod.name} added to cart`, {
             position: toast.POSITION.BOTTOM_RIGHT,
-          });
-     }
-      }
+        });
+
+        setCart(updatedCart);
+    }
+};
+
+
+
+     
+
       
 
     return(
         <>
-        <itemContext.Provider value={{ allData,setAllData,clickHome,currentPage,setCurrentPage,categories,selectedCategories,quantity,total,cart,targetRef,categoryData,setcategoryData,clickprodDetails,CatClick,scrollToMiddle,addFilter, handleCart, handleLogOut, handleAddToCart }}>
+        <itemContext.Provider value={{ GoToProfile,allData,setAllData,clickHome,currentPage,setCurrentPage,categories,selectedCategories,quantity,total,cart,targetRef,categoryData,setcategoryData,clickprodDetails,CatClick,scrollToMiddle,addFilter, handleCart, handleLogOut, handleAddToCart }}>
             {children}
         </itemContext.Provider>
         <ToastContainer /> {/* Should be outside the context provider */}

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import Body from "../Components/body";
 import '../styles/home.css';
@@ -7,10 +7,20 @@ import ProductDetail from "./ProductDetails";
 import Corousal from "../Components/corousal";
 import Profile from "../Components/profile";
 import Category from "../Components/category";
+import { useValue } from "../itemContext";
+import ZoomingLoader from "../Components/loader";
+import AboutPage from "../Components/aboutUs";
+
+
 
 const Home = () => {
  
   const targetRef = useRef(null);
+  const {setCurrentPage,currentPage}=useValue();
+
+  useEffect(() => {
+    setCurrentPage('home');
+  }, []);
 
   return (
     <>
@@ -35,6 +45,11 @@ const Home = () => {
    <div className="body">
     <Body  ref={targetRef}/>
    </div>
+
+   
+  
+
+   
 
    
     

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import '../styles/signUp.css';
@@ -6,11 +6,17 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavBar from "../Components/Navbar";
+import { useValue } from "../itemContext";
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const { currentPage, setCurrentPage } = useValue();
+
+    useEffect(()=>{
+       setCurrentPage('Login');
+    },[]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,8 +53,9 @@ const Login = () => {
         <div>
             <ToastContainer />
 
-            <h1>Login</h1>
+            
             <form onSubmit={handleSubmit} className="Login-form">
+            <h1>Login</h1>
                 <input
                     type="email"
                     placeholder="Email"
@@ -64,8 +71,10 @@ const Login = () => {
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
                 <button type="submit" className="Submit">Login</button>
+
+                <p>Need to Signup ? <Link to='/signup' className="signup-link">Create Account</Link></p>
             </form>
-            <p>Need to Signup ? <Link to='/signup'>Create Account</Link></p>
+            
         </div>
         </>
     );

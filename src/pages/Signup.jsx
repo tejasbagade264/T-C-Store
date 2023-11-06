@@ -5,6 +5,8 @@ import '../styles/signUp.css'
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateProfile } from "firebase/auth";
+import NavBar from "../Components/Navbar";
 
 
 const Signup = () =>{
@@ -14,13 +16,18 @@ const Signup = () =>{
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
-
+      
     const handleSubmit =async (e) =>{
        e.preventDefault();
        try {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         console.log(userCredentials);
         const user= userCredentials.user;
+
+        await updateProfile(user, {
+          displayName: name,
+        });
+
         localStorage.setItem('token', user.accessToken);
         localStorage.setItem('user', JSON.stringify(user));
         navigate('/');
@@ -30,6 +37,8 @@ const Signup = () =>{
     }
 
     return(
+      <>
+      <NavBar />
         <div>
             <h1>Signup</h1>
 
@@ -59,9 +68,11 @@ const Signup = () =>{
                  />
                  
                 <button type="submit" className="Submit">Signup</button>
+                <p>Already have an account ? <Link to ='/login'>Login</Link></p>
             </form>
-            <p>Need to Signup ? <Link to ='/login'>Login</Link></p>
+           
         </div>
+        </>
     )
 }
 

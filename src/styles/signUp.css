@@ -1,12 +1,19 @@
 /* Apply some basic styling to the Signup component */
 .signup-form ,
 .Login-form{
-    max-width: 300px;
+    width: 350px;
+    display: flex;
     margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   h1 {
     text-align: center;
+  }
+  .signup-link:hover {
+    color: rgb(35, 39, 248);
   }
   
   input {
@@ -19,19 +26,20 @@
   }
   
   button.Submit {
-    margin-left: 30px;
-    width: 40%;
+   
+    width:150px;
     padding: 10px;
-    background-color: #007bff; /* Blue color, you can change it */
-    color: white;
+    background-color:#dd8989;
+   
+    font-weight:bold;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1.5rem;
     cursor: pointer;
   }
   
   button.Submit:hover {
-    background-color: #0056b3; /* Darker shade of blue on hover */
+    background-color:#c27777;
   }
   
   

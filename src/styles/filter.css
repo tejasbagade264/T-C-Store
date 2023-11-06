@@ -17,10 +17,14 @@
     margin-bottom: 10px;
     color: black;
     font-family:  Courier, monospace;
+    gap:2rem;
 }
 .types:hover{
     color:red
     
+}
+.menu-tab{
+    display: none;
 }
 
 .selected {
@@ -34,4 +38,23 @@
     display: block;
 }
 
+/* .sidebar-menu-item{
+    width: 50%;
+    height: 500px;
+    position: absolute;
+    top: 0px;
+    background-color: yellowgreen;
+} */
 
+
+/* @media (max-width: 768px){
+
+    .menu-tab{
+        display: block;
+    }
+
+    .types{
+        display: none;
+    }
+
+} */

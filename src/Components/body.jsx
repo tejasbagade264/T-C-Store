@@ -4,10 +4,11 @@ import "../styles/body.css";
 import { useValue } from "../itemContext";
 
 
+
 function Body() {
   const { handleAddToCart, selectedCategories,targetRef,clickprodDetails,setAllData, allData } = useValue();
   const [filteredData, setFilteredData] = useState([]);
-  
+  const[rating,setRating] = useState(1);
 
   // Update the filtered data when selectedCategories change
   useEffect(() => {
@@ -46,6 +47,12 @@ function Body() {
             </div>
             <div className="product-Details">
               <p className="itemName">{item.title}</p>
+              
+              <div className="starRating">
+                {Array.from({ length: item.rating }, (_, index) => (
+                  <i key={index} className="fa-solid fa-star" style={{ color: '#fff700' }}></i>
+                ))}
+              </div>                
               <p>&#x20B9; {item.price}</p>
               <button
                 onClick={() => handleAddToCart(item)}

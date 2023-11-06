@@ -1,19 +1,28 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import ZoomingLoader from "./loader";
 
 const Protected = () => {
-//   const token = localStorage.getItem('token');
-//   console.log("chhecking token ");
+  const navigate = useNavigate();
+  const user = localStorage.getItem('user');
+  const [isLoading, setIsLoading] = useState(true);
 
-//   if (!token) {
-//     // If there's no token, navigate to the login page
-//     console.log("Token not found ");
-//     return Navigate('/login');
-//   }
+  useEffect(() => {
+    if (!user) {
+      // If there's no user, navigate to the login page
+      navigate('/login');
+    } else {
+      // Simulate an API call (e.g., checking user authentication) with a setTimeout
+      setTimeout(() => {
+        setIsLoading(false); // Set isLoading to false after authentication is checked
+      }, 2000); // Adjust the timeout as needed
+    }
+  }, [navigate, user]);
 
   return (
     <div>
-      <Outlet />
+     <Outlet />
     </div>
   );
 }

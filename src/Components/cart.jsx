@@ -2,12 +2,15 @@ import React from "react";
 import { useValue } from "../itemContext";
 import '../styles/cart.css'; // Import your CSS file for styling
 import NavBar from "../Components/Navbar";
+import { useEffect } from "react";
 
 const Cart = () => {
     const value = useValue();
-    const { cart,total,quantity } = useValue();
+    const { cart,total,quantity ,setCurrentPage} = useValue();
 
-    
+    useEffect(() => {
+        setCurrentPage('cart');
+      }, []);
 
     return (
         <>
